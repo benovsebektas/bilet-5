@@ -1,0 +1,62 @@
+﻿@model List<TeamMember>
+@using bilet_5.Models;
+<div class="card-body">
+    <h4 class="card-title">Striped Table</h4>
+    <p class="card-description">
+        
+        <a asp-controller="TeamMember"asp-action="Create" type="button" class="btn btn-secondary">Create</a> <code>.table-striped</code>
+    </p>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        User
+                    </th>
+                    <th>
+                        First name
+                    </th>
+                    <th>
+                        Progress
+                    </th>
+                    <th>
+                        Amount
+                    </th>
+                    <th>
+                        Deadline
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (TeamMember item in Model)
+                {
+                     <tr>
+                    <td class="py-1">
+
+                        <img src="~/assets/img/team/@item.ImagePath" alt="image">
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+          
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        @item.Position
+                    </td>
+                        <td>
+                            @item.Title
+                        </td>
+                        <td>
+                            <a asp-controller="TeamMember" asp-action="Update" type="button" class="btn btn-primary">Update</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id"  type ="button" class="btn btn-secondary">Delete</a>
+                        </td>
+                </tr>
+                }
+               
+               
+            </tbody>
+        </table>
+    </div>
+</div>
